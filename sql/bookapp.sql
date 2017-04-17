@@ -1,40 +1,40 @@
-drop database bookapp_db;
+DROP DATABASE bookapp_db;
 
-create database bookapp_db;
+CREATE DATABASE bookapp_db;
 
-use bookapp_db; 
+USE bookapp_db; 
 
-drop table users;
+DROP TABLE users;
 
-create table users
+CREATE TABLE users
 (
- id int primary key auto_increment,
- name varchar(200) not null,
- email varchar(200) not null,
- password varchar(200) not null
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ NAME VARCHAR(200) UNIQUE NOT NULL,
+ email VARCHAR(200) NOT NULL,
+ PASSWORD VARCHAR(200) NOT NULL
 );
 
-drop table books;
+DROP TABLE books;
 
-create table books
+CREATE TABLE books
 (
- id int primary key auto_increment,
- name varchar(200) not null,
- price float not null
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ NAME VARCHAR(200) NOT NULL,
+ price FLOAT NOT NULL
 );
  
-drop table orders;
+DROP TABLE orders;
 
-create table orders
+CREATE TABLE orders
 (
- id int primary key auto_increment,
- user_id int,
- book_id int,
- quantity int not null,
- ordered_date timestamp default now(),
- status varchar(50) default 'ORDERED' ,
- constraint fk_users_id foreign key(user_id) references users(id),
- constraint fk_books_id foreign key(book_id) references books(id)
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ user_id INT,
+ book_id INT,
+ quantity INT NOT NULL,
+ ordered_date TIMESTAMP DEFAULT NOW(),
+ STATUS VARCHAR(50) DEFAULT 'ORDERED' ,
+ CONSTRAINT fk_users_id FOREIGN KEY(user_id) REFERENCES users(id),
+ CONSTRAINT fk_books_id FOREIGN KEY(book_id) REFERENCES books(id)
 );
 
 

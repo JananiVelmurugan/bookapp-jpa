@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%> 
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +7,10 @@
 <title>Login</title>
 </head>
 <body>
-	Email
-	<input type="email" name="user_email" /> Password
-	<input type="text" name="user_password" />
-	<button type="submit">Login</button>
-
+	<form action="../users/login" method="post">
+		Email <input type="email" name="email" /> Password <input
+			type="password" name="password" />
+		<button type="submit">Login</button>
+	</form>
 </body>
 </html>
