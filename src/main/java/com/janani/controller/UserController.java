@@ -28,21 +28,17 @@ public class UserController {
 
 	@PostMapping("/register")
 	public String doRegistration(@ModelAttribute User user) throws Exception {
-
-		System.out.println(user);
-
-		User userObj = userRepository.save(user);
-
-		System.out.println(userObj.getId());
-		if (userObj != null) {
+		try {
+			userRepository.save(user);
 			// Send Registration Notification Mail
 			String subject = "Your account has been created";
 			String body = "Welcome to Revature ! You can login to your account !";
 			emailUtil.send(user.getEmail(), subject, body);
 			return "login";
-		} else {
+		} catch (Exception e) {
 			return "register";
 		}
+
 	}
 
 	@GetMapping("/login")
@@ -54,7 +50,7 @@ public class UserController {
 	public String dologin(@ModelAttribute User user) {
 		User userObj = userRepository.login(user.getEmail(), user.getPassword());
 		if (userObj != null) {
-			return "home";
+			return "book-list";
 		} else {
 			return "login";
 		}
