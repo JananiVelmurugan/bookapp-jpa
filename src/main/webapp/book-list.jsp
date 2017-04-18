@@ -6,17 +6,27 @@
 <title>List</title>
 </head>
 <body>
-	List of Books
-	<table border=1>
-		<c:forEach items="${books}" var="book">
+
+	<form action="../orders/save" method="post">
+		List of Books
+		<table border=1>
 			<tr>
-				<td><c:out value="${book.id}" /></td>
-				<td><c:out value="${book.name}" /></td>
-				<td><c:out value="${book.price}" /></td>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
 			</tr>
-		</c:forEach>
-	</table>
-
-
+			<c:forEach items="${books}" var="book">
+				<tr>
+					<td><input type="text" name="book_id" value="${book.id}" /></td>
+					<td><input type="text" name="book_name" value="${book.name}" /></td>
+					<td><input type="text" name="book_price" value="${book.price}" /></td>
+					<td><input type="text" name="book_quantity" /></td>
+					<td><button type="submit">add to cart</button>
+				</tr>
+			</c:forEach>
+		</table>
+	</form>
+	<a href="../orders/">View Cart</a>
 </body>
 </html>

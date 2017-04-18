@@ -1,5 +1,9 @@
 package com.janani.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.janani.model.Book;
 import com.janani.model.User;
+import com.janani.repository.BookRepository;
 import com.janani.repository.UserRepository;
 import com.janani.util.EmailUtil;
 
@@ -20,6 +26,9 @@ public class UserController {
 
 	@Autowired
 	private EmailUtil emailUtil;
+
+	@Autowired
+	private BookRepository bookRepository;
 
 	@GetMapping("/register")
 	public String showRegistration() {
@@ -47,9 +56,12 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public String dologin(@ModelAttribute User user) {
+	public String dologin(@ModelAttribute User user, HttpSession session) {
 		User userObj = userRepository.login(user.getEmail(), user.getPassword());
 		if (userObj != null) {
+			session.setAttribute("user", userObj);
+			List<Book> books = bookRepository.findAll();
+			session.setAttribute("books", books);
 			return "book-list";
 		} else {
 			return "login";
