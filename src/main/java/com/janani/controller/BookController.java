@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.janani.model.Book;
-import com.janani.repository.BookRepository;
+import com.janani.service.BookService;
 
 @Controller
 @RequestMapping("books")
 public class BookController {
 
 	@Autowired
-	private BookRepository bookRepository;
+	private BookService bookService;
 
 	@GetMapping("/")
 	public String show(HttpSession session) {
-		List<Book> books = bookRepository.findAll();
+		List<Book> books = bookService.findAll();
 		System.out.println(books);
 		session.setAttribute("books", books);
-		return "book-list";
+		return "book/list";
 	}
 
 }

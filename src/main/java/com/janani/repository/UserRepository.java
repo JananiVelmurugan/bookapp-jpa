@@ -8,5 +8,7 @@ import com.janani.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Query(value = "select * from users where email=?1 and password=?2", nativeQuery = true)
-	public User login(String email, String password);
+	public User findByEmailAndPassword(String emailId, String password);
+	
+	
 }

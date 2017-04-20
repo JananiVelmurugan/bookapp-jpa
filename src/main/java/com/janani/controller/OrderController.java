@@ -33,20 +33,14 @@ public class OrderController {
 
 	@PostMapping("/save")
 	public String save(HttpServletRequest request, HttpSession session) {
-		Long bookId = Long.parseLong(request.getParameter("book_id"));
-		String bookName = request.getParameter("book_name");
-		Float bookPrice = Float.parseFloat(request.getParameter("book_price"));
-		Integer bookQuantity = Integer.parseInt(request.getParameter("book_quantity"));
-		User user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute("LOGGED_IN_USER");
 
 		Order order = new Order();
 
 		order.setUserId(user.getId());
-		order.setBookId(bookId);
-		order.setQuantity(bookQuantity);
 
 		orderRepository.save(order);
 
-		return "book-list";
+		return "order/summary";
 	}
 }
