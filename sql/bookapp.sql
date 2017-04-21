@@ -29,13 +29,27 @@ CREATE TABLE orders
 (
  id INT PRIMARY KEY AUTO_INCREMENT,
  user_id INT,
- book_id INT,
- quantity INT NOT NULL,
+ total_price FLOAT NOT NULL,
  ordered_date TIMESTAMP DEFAULT NOW(),
- STATUS VARCHAR(50) DEFAULT 'ORDERED' ,
- CONSTRAINT fk_users_id FOREIGN KEY(user_id) REFERENCES users(id),
- CONSTRAINT fk_books_id FOREIGN KEY(book_id) REFERENCES books(id)
+ modified_date TIMESTAMP DEFAULT NOW(),
+ STATUS VARCHAR(50) DEFAULT 'ORDERED' 
+ );
+
+DROP TABLE carts;
+
+CREATE TABLE carts
+(
+id INT PRIMARY KEY AUTO_INCREMENT,
+user_id INT,
+book_id INT,
+quantity INT NOT NULL,
+CONSTRAINT fk_users_id FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
+INSERT INTO books VALUES(1,'Java',500);
+
+INSERT INTO books VALUES(2,'C',500);
+
+INSERT INTO books VALUES(3,'C++',500);
 
 

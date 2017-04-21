@@ -1,8 +1,11 @@
 package com.janani.model;
- 
+
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -21,4 +24,5 @@ public class Book {
 
 	@Column(name = "price")
 	private Float price;
+
 }

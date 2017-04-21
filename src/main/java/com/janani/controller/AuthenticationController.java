@@ -62,7 +62,6 @@ public class AuthenticationController {
 			String subject = "Your account has been created";
 			String body = "Welcome to Revature ! You can login to your account !";
 			emailUtil.send(user.getEmail(), subject, body);
-
 			return "redirect:../";
 		} catch (Exception e) {
 			e.printStackTrace();

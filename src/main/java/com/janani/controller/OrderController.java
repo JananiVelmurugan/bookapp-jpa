@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.janani.model.Order;
-import com.janani.model.User;
 import com.janani.repository.OrderRepository;
 
 @Controller
@@ -33,13 +32,6 @@ public class OrderController {
 
 	@PostMapping("/save")
 	public String save(HttpServletRequest request, HttpSession session) {
-		User user = (User) session.getAttribute("LOGGED_IN_USER");
-
-		Order order = new Order();
-
-		order.setUserId(user.getId());
-
-		orderRepository.save(order);
 
 		return "order/summary";
 	}

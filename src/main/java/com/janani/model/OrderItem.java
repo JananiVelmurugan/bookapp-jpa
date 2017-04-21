@@ -7,14 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "order_items")
+public class OrderItem {
 
 	@Id
 	@GeneratedValue
@@ -22,15 +21,13 @@ public class Order {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	@JoinColumn(name = "order_id")
+	private Order order;
 
-	@Transient
-	@Column(name = "total_price")
-	private Float totalPrice;
+	@Column(name = "quantity")
+	private Integer quantity;
 
-	@Transient
-	@Column(name = "status")
-	private String status;
-
+	@ManyToOne
+	@JoinColumn(name = "book_id")
+	private Book book;
 }

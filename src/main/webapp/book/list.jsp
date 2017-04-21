@@ -21,11 +21,9 @@
 									<h4>List of Books</h4>
 								</div>
 							</div>
-							<form action="../orders/save" method="post">
 
-
-
-								<c:forEach items="${books}" var="book">
+							<c:forEach items="${books}" var="book">
+								<form action="../orderItems/addToCart">
 									<table>
 										<tr>
 											<td><input type="hidden" name="book_id"
@@ -40,13 +38,14 @@
 												value="${book.price}" /></td>
 										</tr>
 										<tr>
-											<td><a href="../orderBooks/addToCart">add to cart</a></td>
+											<td><button type="submit">add to cart</button></td>
 										</tr>
 									</table>
-								</c:forEach>
+								</form>
+							</c:forEach>
 
-							</form>
-							<a href="../orders/">View Cart</a>
+
+							<a href="../carts/list">View Cart</a>
 						</div>
 					</div>
 				</div>
