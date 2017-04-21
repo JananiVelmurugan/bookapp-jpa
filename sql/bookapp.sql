@@ -14,6 +14,8 @@ CREATE TABLE users
  PASSWORD VARCHAR(200) NOT NULL
 );
 
+insert into users ( name,email,password) values ('Janani', 'jananise@gmail.com', 'test@123');
+
 DROP TABLE books;
 
 CREATE TABLE books
@@ -44,7 +46,7 @@ order_id INT,
 book_id INT,
 quantity INT NOT NULL,
 ordered_date TIMESTAMP DEFAULT NOW(),
-CONSTRAINT fk_orders_id FOREIGN KEY(order_id) REFERENCES users(id),
+CONSTRAINT fk_orders_id FOREIGN KEY(order_id) REFERENCES orders(id),
 CONSTRAINT fk_books_id FOREIGN KEY(book_id) REFERENCES books(id)
 );
 
@@ -57,3 +59,5 @@ INSERT INTO books VALUES(3,'C++',500);
 SELECT SUM(a.qp) total_price
 FROM
 (SELECT quantity*price qp FROM order_items JOIN books ON books.id=order_items.book_id WHERE order_id=1) a;
+
+

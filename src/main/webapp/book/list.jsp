@@ -4,6 +4,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>List</title>
+<style>
+  .book-container-bg{
+  background: #fff;
+    padding: 10px;
+    margin: 10px
+  }
+</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -15,7 +22,7 @@
 				<div class="container-fluid">
 
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-md-8">
 							<div class="portlet-title">
 								<div class="page-header">
 									<h4>List of Books</h4>
@@ -23,29 +30,17 @@
 							</div>
 
 							<c:forEach items="${books}" var="book">
-								<form action="../orderItems/addToCart">
-									<table>
-										<tr>
-											<td><input type="hidden" name="book_id"
-												value="${book.id}" /></td>
-										</tr>
-										<tr>
-											<td><input type="text" name="book_name" readonly
-												value="${book.name}" /></td>
-										</tr>
-										<tr>
-											<td><input type="text" name="book_price" readonly
-												value="${book.price}" /></td>
-										</tr>
-										<tr>
-											<td><button type="submit">add to cart</button></td>
-										</tr>
-									</table>
-								</form>
+								<div class="row book-container-bg">
+								    <div class="col-lg-4 col-md-4 col-xs-12">
+								    <img class="card-img-left" src="../images/java.jpg" width="100" alt="Card image cap">
+								    </div>
+								    
+								     <div class="col-lg-8 col-md-8 col-xs-12">
+								     <p class="card-text">${book.name} - Rs.${book.price }</p>
+								     <a href="../books/${book.id}" class="btn btn-success btn-sm">View</a>
+								     </div>
+									</div>
 							</c:forEach>
-
-
-							<a href="../carts/list">View Cart</a>
 						</div>
 					</div>
 				</div>

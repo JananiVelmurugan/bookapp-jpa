@@ -70,4 +70,10 @@ public class AuthenticationController {
 		}
 
 	}
+	
+	@GetMapping("/Logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 }

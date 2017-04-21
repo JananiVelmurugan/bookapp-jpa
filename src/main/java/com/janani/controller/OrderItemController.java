@@ -41,7 +41,7 @@ public class OrderItemController {
 	}
 
 	@PostMapping("/addToCart")
-	public String addToCart(HttpServletRequest request, HttpSession session) {
+	public String addToCart(@RequestParam("book_id") Long bookId, @RequestParam("qty") Integer qty,  HttpServletRequest request, HttpSession session) {
 
 		User user = (User) session.getAttribute("LOGGED_IN_USER");
 		Order order = new Order();
@@ -50,15 +50,17 @@ public class OrderItemController {
 
 		OrderItem orderItem = new OrderItem();
 		orderItem.setOrder(order);
-		Book book = bookService.findOne(Long.parseLong(request.getParameter("book_id")));
+		Book book = bookService.findOne(bookId);
 		orderItem.setBook(book);
-		orderItem.setQuantity(Integer.parseInt(request.getParameter("book_quantity")));
+		orderItem.setQuantity(qty);
 		orderItemService.save(orderItem);
-
+/*
 		Float totalPrice = orderItemService.findByOrder(order.getId());
 		order.setTotalPrice(totalPrice);
-		orderService.save(order);
-		return "order/add-to-cart";
+		orderService.save(order);*/
+		
+		
+		return "redirect:/books";
 	}
 
 	@GetMapping("/list")

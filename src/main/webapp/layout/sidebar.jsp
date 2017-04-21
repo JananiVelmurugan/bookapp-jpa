@@ -50,15 +50,15 @@
 
 	<div class="sidebar-wrapper">
 		<div class="logo">
-			<a href="index.html" class="simple-text"> PubHub </a>
+			<a href="../" class="simple-text"> PubHub </a>
 		</div>
 
 		<ul class="nav">
-			<li class="active"><a href="../courses/list"> <i
+			<li class="active"><a href="../books"> <i
 					class="pe-7s-graph"></i>
 					<p>Books</p>
 			</a></li>
-			<li><a href="../api/coursesenrollments/myCourses"> <i
+			<li><a href="../orders/myorders"> <i
 					class="pe-7s-user"></i>
 					<p>My Orders</p>
 			</a></li>

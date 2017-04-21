@@ -19,16 +19,7 @@
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="../users/list">All Users</a></li>
-						<li><a href="../roles/list">All Roles</a></li>
-						<li><a href="../courses/listCategory">All Courses</a></li>
-
-						<li><a href="../categories/list">All Categories</a></li>
-						<li><a href="../coursecategories/list">All
-								CourseCategories</a></li>
-
-						<li><a href="../coursemodules/list">All CourseModules</a></li>
-						<li><a href="../videos/list">All Videos</a></li>
-
+						<li><a href="../orders/list">All Orders</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">
