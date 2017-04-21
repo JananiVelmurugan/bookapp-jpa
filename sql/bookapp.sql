@@ -29,21 +29,23 @@ CREATE TABLE orders
 (
  id INT PRIMARY KEY AUTO_INCREMENT,
  user_id INT,
- total_price FLOAT NOT NULL,
+ total_price FLOAT NOT NULL DEFAULT 0,
  ordered_date TIMESTAMP DEFAULT NOW(),
  modified_date TIMESTAMP DEFAULT NOW(),
- STATUS VARCHAR(50) DEFAULT 'ORDERED' 
- );
+ STATUS VARCHAR(50) DEFAULT 'ORDERED' ,
+ CONSTRAINT fk_users_id FOREIGN KEY(user_id) REFERENCES users(id));
 
-DROP TABLE carts;
+DROP TABLE order_items;
 
-CREATE TABLE carts
+CREATE TABLE order_items
 (
 id INT PRIMARY KEY AUTO_INCREMENT,
-user_id INT,
+order_id INT,
 book_id INT,
 quantity INT NOT NULL,
-CONSTRAINT fk_users_id FOREIGN KEY(user_id) REFERENCES users(id)
+ordered_date TIMESTAMP DEFAULT NOW(),
+CONSTRAINT fk_orders_id FOREIGN KEY(order_id) REFERENCES users(id),
+CONSTRAINT fk_books_id FOREIGN KEY(book_id) REFERENCES books(id)
 );
 
 INSERT INTO books VALUES(1,'Java',500);
@@ -52,4 +54,6 @@ INSERT INTO books VALUES(2,'C',500);
 
 INSERT INTO books VALUES(3,'C++',500);
 
-
+SELECT SUM(a.qp) total_price
+FROM
+(SELECT quantity*price qp FROM order_items JOIN books ON books.id=order_items.book_id WHERE order_id=1) a;
