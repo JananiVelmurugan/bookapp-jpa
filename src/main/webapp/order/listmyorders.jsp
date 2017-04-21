@@ -40,7 +40,8 @@
 									<c:forEach items="${MY_ORDERS}" var="order">
 										<tr>
 											<td>${order.id}</td>											
-											<td>${order.status}</td>
+											<td>${order.status}</td>											
+											<td> <a href="../orders/cancelOrder?id=${order.id}">Cancel Order </a>
 										</tr>
 
 									</c:forEach>

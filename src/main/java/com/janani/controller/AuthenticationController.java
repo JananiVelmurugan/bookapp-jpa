@@ -41,7 +41,7 @@ public class AuthenticationController {
 			List<Book> books = bookService.findAll();
 			session.setAttribute("LOGGED_IN_USER", user);
 			session.setAttribute("books", books);
-			return "book/list";
+			return "redirect:../books";
 		} else {
 			modelMap.addAttribute("ERROR_MESSAGE", "Invalid Email Id/Password");
 			return "home";
