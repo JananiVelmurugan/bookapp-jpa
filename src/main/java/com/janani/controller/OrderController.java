@@ -43,6 +43,15 @@ public class OrderController {
 		return "order/listmyorders";
 
 	}
+	
+	@GetMapping
+	public String list(ModelMap modelMap, HttpSession session) {
+
+		List<Order> list = orderRepository.findAll();
+		modelMap.addAttribute("ALL_ORDERS", list);
+		return "order/list";
+
+	}
 
 	@PostMapping("/save")
 	public String save(HttpServletRequest request, HttpSession session) {

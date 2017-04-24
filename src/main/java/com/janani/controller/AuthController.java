@@ -21,7 +21,7 @@ import com.janani.util.EmailUtil;
 
 @Controller
 @RequestMapping("auth")
-public class AuthenticationController {
+public class AuthController {
 
 	@Autowired
 	private UserService userService;
@@ -48,6 +48,11 @@ public class AuthenticationController {
 		}
 	}
 
+	@GetMapping("/login")
+	public String login() {
+		return "user/login";
+	}
+	
 	@GetMapping("/register")
 	public String showRegsiter() {
 		return "user/register";
@@ -71,7 +76,7 @@ public class AuthenticationController {
 
 	}
 	
-	@GetMapping("/Logout")
+	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
