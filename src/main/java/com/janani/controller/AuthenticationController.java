@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,6 +24,8 @@ import com.janani.util.EmailUtil;
 @RequestMapping("auth")
 public class AuthenticationController {
 
+	private static final Logger LOGGER = Logger.getLogger(AuthenticationController.class);
+
 	@Autowired
 	private UserService userService;
 
@@ -35,15 +38,19 @@ public class AuthenticationController {
 	@PostMapping("/login")
 	public String login(@RequestParam("emailId") String emailId, @RequestParam("password") String password,
 			ModelMap modelMap, HttpSession session) {
+		LOGGER.info("Entering Login");
+		LOGGER.debug(new Object[] { emailId, password });
 
 		User user = userService.findByEmailAndPassword(emailId, password);
 		if (user != null) {
 			List<Book> books = bookService.findAll();
 			session.setAttribute("LOGGED_IN_USER", user);
 			session.setAttribute("books", books);
+			LOGGER.info("Login Success");
 			return "redirect:../books";
 		} else {
 			modelMap.addAttribute("ERROR_MESSAGE", "Invalid Email Id/Password");
+			LOGGER.error("Login Failure");
 			return "home";
 		}
 	}
@@ -70,7 +77,7 @@ public class AuthenticationController {
 		}
 
 	}
-	
+
 	@GetMapping("/Logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
