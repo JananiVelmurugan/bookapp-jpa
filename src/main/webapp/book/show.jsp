@@ -4,51 +4,50 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>List</title>
+<script>
+
+function calculateTotal(){
+	
+	//document.getElementById("total_amount").value = 100;
+}
+
+</script>
 </head>
-<body>
-	<div class="wrapper">
-		<div><%@ include file="../../layout/sidebar.jsp"%></div>
-		<div class="main-panel">
+<body onload="calculateTotal()">
 
-			<div><%@ include file="../../layout/header.jsp"%></div>
-			<div class="content">
-				<div class="container-fluid">
+	<div><%@ include file="../../layout/header.jsp"%></div>
 
-					<div class="row">
-						<div class="col-md-12">
-							<div class="portlet-title">
-								<div class="page-header">
-									<h4>Selected Book</h4>
-								</div>
-							</div>
+	<div class="container-fluid">
 
-							<form action="../orderItems/addToCart" method="post" >
-								<input type="hidden" name="book_id" value="${SELECTED_BOOK.id}" />
-								<table>
-									<tr>
-										<th width="50%">Book Name</th>
-										<th width="15%">Price</th>
-										<th width="15%">Quantity</th>
-									</tr>
-									<tr>
+		<div class="row">
+			<div class="col-md-12">
 
-										<td>${SELECTED_BOOK.name}</td>
-
-										<td>Rs. ${SELECTED_BOOK.price}</td>
-										<td><input type="number" name="qty" min="1" max="5" value="1"
-											required />
-										<td><button type="submit" class="btn btn-primary">Add
-												To Cart</button></td>
-									</tr>
-								</table>
-							</form>
-
-
-							<a href="../books/list">Back</a>
-						</div>
-					</div>
-				</div>
+				<b>Cart Details</b>
 			</div>
+
+			<form action="../orderItems/addToCart" method="post">
+				<input type="hidden" name="book_id" value="${SELECTED_BOOK.id}" />
+				<table class="table table-bordered" border="1">
+					<tr>
+						<th>Book Name</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Total Amount</th>
+					</tr>
+					<tr>
+
+						<td>${SELECTED_BOOK.name}</td>
+
+						<td>Rs. ${SELECTED_BOOK.price}</td>
+						<td><input type="number" name="qty" min="1" max="5" value="1"
+							required  /> </td>
+						<td><input type="number" name="total_amount" min="1" max="5" 
+							required readonly onkeyup="alert(${SELECTED_BOOK.price})" /> </td>
+						<td><button type="submit" class="btn btn-primary">Add
+								To Cart</button></td>
+					</tr>
+				</table>
+			</form>
 
 		</div>
 	</div>

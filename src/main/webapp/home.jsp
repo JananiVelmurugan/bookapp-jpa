@@ -10,9 +10,9 @@
 </head>
 <body>
 
-<%@ include file="../../layout/header.jsp"%>
+	<%@ include file="../../layout/header.jsp"%>
 	<div class="container-fluid">
-	
+
 		<div class="row">
 			<div class="col-md-4">
 

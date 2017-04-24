@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.janani.model.Order;
 import com.janani.model.User;
@@ -57,5 +58,13 @@ public class OrderController {
 	public String save(HttpServletRequest request, HttpSession session) {
 
 		return "order/summary";
+	}
+	
+	@GetMapping("/updateStatus")
+	public String updateStatus(@RequestParam("id") Long orderId , @RequestParam("status")String status ) {
+		Order order = orderRepository.findOne(orderId);
+		order.setStatus(status);
+		orderRepository.save(order);	
+		return "redirect:../orders/myorders";
 	}
 }

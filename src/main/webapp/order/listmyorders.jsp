@@ -19,6 +19,7 @@
 						<thead>
 							<tr>
 								<th width="50%">Order Id</th>
+								<th> Amount </th>
 								<th>Status</th>
 							</tr>
 						</thead>
@@ -26,9 +27,18 @@
 							<c:forEach items="${MY_ORDERS}" var="order">
 								<tr>
 									<td>${order.id}</td>
-									<td>${order.status}</td>
-									<td><a href="../orders/cancelOrder?id=${order.id}">Cancel
-											Order </a>
+									<td>Rs. ${order.totalPrice } </td>
+									<td>${order.status}</td>									
+									<c:if test="${order.status == 'ORDERED'}">
+										<td><a
+											href="../orders/updateStatus?id=${order.id}&status=CANCELLED">Cancel
+												Order </a></td>
+									</c:if>
+									<c:if test="${order.status !='CANCELLED' && order.status != 'DELIVERED'}">
+										<td><a
+											href="../orders/updateStatus?id=${order.id}&status=DELIVERED">Deliver
+												Order </a></td>
+									</c:if>
 								</tr>
 
 							</c:forEach>

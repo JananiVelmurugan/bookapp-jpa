@@ -46,6 +46,8 @@ public class OrderItemController {
 		User user = (User) session.getAttribute("LOGGED_IN_USER");
 		Order order = new Order();
 		order.setUser(user);
+		order.setTotalPrice(0f);
+		order.setStatus("ORDERED");
 		orderService.save(order);
 
 		OrderItem orderItem = new OrderItem();
