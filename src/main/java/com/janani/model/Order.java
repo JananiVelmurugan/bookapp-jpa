@@ -41,7 +41,7 @@ public class Order {
 	@Column(name = "status")
 	private String status;
 	
-	@OneToMany(mappedBy = "book", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "order", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<OrderItem> orderItems = new ArrayList<>();
 	
 	/*@Column (name="ordered_date")

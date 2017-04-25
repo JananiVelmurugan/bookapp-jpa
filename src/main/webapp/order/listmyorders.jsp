@@ -34,6 +34,7 @@
 									<li>${item.book.name} (Quantity - ${item.quantity} ) </li>
 									</c:forEach>
 									</ul>
+									</td>
 									<td>Rs. ${order.totalPrice } </td>
 									<td>${order.status}</td>									
 									<c:if test="${order.status == 'ORDERED'}">
