@@ -1,5 +1,6 @@
 package com.janani.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,22 +16,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.janani.model.Order;
 import com.janani.model.User;
-import com.janani.repository.OrderRepository;
+import com.janani.service.OrderService;
 
 @Controller
 @RequestMapping("orders")
 public class OrderController {
 
 	@Autowired
-	private OrderRepository orderRepository;
-
+	private OrderService orderService;
 
 
 	@GetMapping("/myorders")
 	public String myOrders(ModelMap modelMap, HttpSession session) {
 
 		User loggedInUser = (User) session.getAttribute("LOGGED_IN_USER");
-		List<Order> list = orderRepository.findByUserId(loggedInUser.getId());
+		List<Order> list = orderService.findByUserIdOrderByIdDesc(loggedInUser.getId());
 		modelMap.addAttribute("MY_ORDERS", list);
 		return "order/listmyorders";
 
@@ -39,7 +39,7 @@ public class OrderController {
 	@GetMapping
 	public String list(ModelMap modelMap, HttpSession session) {
 
-		List<Order> list = orderRepository.findAll();
+		List<Order> list = orderService.findAllOrders();
 		System.out.println("orders:"+ list.size());
 		for (Order order : list) {
 			System.out.println(order);
@@ -50,16 +50,36 @@ public class OrderController {
 	}
 
 	@PostMapping("/save")
-	public String save(HttpServletRequest request, HttpSession session) {
+	public String save(@RequestParam("total_amount") Integer totalAmount, HttpSession session) {
 
-		return "order/summary";
+		Order orderInCart = (Order) session.getAttribute("MY_CART_ITEMS");
+		if ( orderInCart != null && orderInCart.getOrderItems().size() > 0) {
+			orderInCart.setTotalPrice(totalAmount);
+			orderService.save(orderInCart);
+			session.removeAttribute("MY_CART_ITEMS");
+			
+		}
+				
+		return "redirect:../books";
 	}
 	
 	@GetMapping("/updateStatus")
 	public String updateStatus(@RequestParam("id") Long orderId , @RequestParam("status")String status ) {
-		Order order = orderRepository.findOne(orderId);
+		Order order = orderService.findOne(orderId);
+		if ("CANCELLED".equals(status) ) {
+			order.setCancelledDate(LocalDate.now());
+		}
+		else if ("DELIVERED".equals(status)) {
+			order.setDeliveredDate(LocalDate.now());
+		}
+		
 		order.setStatus(status);
-		orderRepository.save(order);	
+		orderService.save(order);	
 		return "redirect:../orders/myorders";
+	}
+	
+	@GetMapping("/cart")
+	public String cart(){
+		return "order/cart";
 	}
 }

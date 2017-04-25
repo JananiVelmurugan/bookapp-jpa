@@ -1,5 +1,7 @@
 package com.janani.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,18 @@ public class OrderService {
 	public void save(Order order) {
 		orderRepository.save(order);
 		
+	}
+	
+	public List<Order> findAllOrders(){
+		return orderRepository.findByOrderByIdDesc();
+	}
+	
+	public Order findOne(Long id){
+		return orderRepository.findOne(id);
+	}
+	
+	public List<Order> findByUserIdOrderByIdDesc(Long userId){
+		return orderRepository.findByUserIdOrderByIdDesc(userId);
 	}
 
 }

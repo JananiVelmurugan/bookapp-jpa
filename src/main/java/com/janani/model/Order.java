@@ -1,5 +1,7 @@
 package com.janani.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Formula;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 import lombok.ToString;
@@ -44,7 +48,13 @@ public class Order {
 	@OneToMany(mappedBy = "order", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<OrderItem> orderItems = new ArrayList<>();
 	
-	/*@Column (name="ordered_date")
-	private LocalDate orderDate;*/
+	@Column (name="ordered_date")	
+	private LocalDateTime orderedDate;
+	
+	@Column (name="cancelled_date")
+	private LocalDate cancelledDate;
+	
+	@Column (name="delivered_date")
+	private LocalDate deliveredDate;
 
 }

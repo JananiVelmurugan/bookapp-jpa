@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>List</title>
+<title>List My Orders</title>
 <style>
 </style>
 </head>
@@ -22,6 +22,7 @@
 								<th>Order Items </th>
 								<th> Amount </th>
 								<th>Status</th>
+								<th>Ordered Date </th>
 							</tr>
 						</thead>
 						<tbody>
@@ -36,17 +37,14 @@
 									</ul>
 									</td>
 									<td>Rs. ${order.totalPrice } </td>
-									<td>${order.status}</td>									
+									<td>${order.status}</td>
+									<td>${order.orderedDate } </td>									
 									<c:if test="${order.status == 'ORDERED'}">
 										<td><a
-											href="../orders/updateStatus?id=${order.id}&status=CANCELLED">Cancel
+											href="../orders/updateStatus?id=${order.id}&status=CANCELLED" class="btn btn-danger btn-sm">Cancel
 												Order </a></td>
 									</c:if>
-									<c:if test="${order.status !='CANCELLED' && order.status != 'DELIVERED'}">
-										<td><a
-											href="../orders/updateStatus?id=${order.id}&status=DELIVERED">Deliver
-												Order </a></td>
-									</c:if>
+									
 								</tr>
 
 							</c:forEach>

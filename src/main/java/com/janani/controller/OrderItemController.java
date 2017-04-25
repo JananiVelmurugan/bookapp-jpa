@@ -34,41 +34,40 @@ public class OrderItemController {
 	@Autowired
 	private BookService bookService;
 
-	@GetMapping("/addToCart")
-	public String addToCart(@RequestParam("book_id") String id, HttpServletRequest request) {
-
-		Book book = bookService.findOne(Long.parseLong(id));
-		request.setAttribute("book", book);
-		return "order/add-to-cart";
-
-	}
 
 	@PostMapping("/addToCart")
 	public String addToCart(@RequestParam("book_id") Long bookId, @RequestParam("qty") Integer qty,  HttpServletRequest request, HttpSession session) {
 
 		User user = (User) session.getAttribute("LOGGED_IN_USER");
 		
+		Order order = (Order) session.getAttribute("MY_CART_ITEMS");
+	
 		//create order
-		Order order = new Order();
-		order.setUser(user);
-		order.setTotalPrice(0);
-		order.setStatus("ORDERED");
+		if ( order == null ){	
+			order = new Order();
+			order.setUser(user);
+			order.setTotalPrice(0);
+			order.setStatus("ORDERED");
+		}
 
 		//store orderItems
-		List<OrderItem> orderItems = new ArrayList<>();
+		List<OrderItem> orderItems = order.getOrderItems();
 		
 		OrderItem orderItem = new OrderItem();
 		orderItem.setOrder(order);
-		Book book = new Book();
-		book.setId(bookId);
+		
+		Book book = bookService.findOne(bookId);
 		orderItem.setBook(book);
 		orderItem.setQuantity(qty);
 		orderItems.add(orderItem);
 		
 		order.setOrderItems(orderItems);
-		orderService.save(order);	
 		
-		return "redirect:/books";
+		session.setAttribute("MY_CART_ITEMS", order);
+		
+		//orderService.save(order);	
+		
+		return "redirect:../orders/cart";
 	}
 
 	@GetMapping("/list")
@@ -76,5 +75,32 @@ public class OrderItemController {
 		return null;
 
 	}
+	
+	@GetMapping("/remove")
+	public String removeItemFromCart(@RequestParam("id") Integer id, HttpSession session) {
+
+		
+		Order order = (Order) session.getAttribute("MY_CART_ITEMS");
+		
+		if (order != null && order.getOrderItems().size() > 0){
+			List<OrderItem> orderItems = order.getOrderItems();
+			orderItems.remove(id);
+			order.setOrderItems(orderItems);
+			session.setAttribute("MY_CART_ITEMS", order);
+		}
+		
+		return "redirect:../orders/cart";
+	
+	}
+	
+	@GetMapping("/emptycart")
+	public String emptyCartid( HttpSession session) {
+
+		session.removeAttribute("MY_CART_ITEMS");
+		return "redirect:../orders/cart";
+	
+	}
+	
+	
 
 }

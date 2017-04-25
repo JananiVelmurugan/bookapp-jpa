@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -69,29 +70,6 @@
        	  	 <a  href="../auth/login" class="btn btn-primary">Login</a>
         	 <a  href="../auth/register" class="btn btn-success">Register</a>
          </c:if>
-        <!--  <form class="form-inline mt-2 mt-md-0" action="auth/login" method="POST">
-          <input class="form-control mr-sm-2" type="email" name="emailId" placeholder="Enter the Email" required  autofocus >
-          <input class="form-control mr-sm-2" type="password" name="password" placeholder="Enter the Password" required >
-          <button  type="submit" class="btn btn-success" >Login</button>
-          <a href="auth/register" class='btn btn-primary'>SIGN UP</a>
-        </form> -->
-        <!-- <form action="auth/login" method="POST" class="form-vertical">
-						 <input type="email"
-								class="form-control" name="emailId" placeholder="Enter emailId"
-								autofocus="autofocus" required="required" id="emailId" />
-						<input type="password"
-								class="form-control" name="password"
-								placeholder="Enter Password" required="required" id="password"
-								value="test@123" />
-						
-							<button type="submit" name="add" class="btn btn-success"
-								id="addLoginBtn">SIGN IN</button>
-
-							<a href="auth/register" class='btn btn-primary'>SIGN UP</a>
-						
-					</form>
-      </div> -->
-      
       </div>
       
     </nav>
