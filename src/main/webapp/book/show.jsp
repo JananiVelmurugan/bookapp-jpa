@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>List</title>
+<title>Items</title>
 </head>
 <body>
 
@@ -14,8 +14,12 @@
 		<div class="row">
 			<div class="col-md-12">
 
-				<b>Cart Details</b>
-
+				<b>Item Details</b>
+				<c:if test="${empty LOGGED_IN_USER}">
+					<div class="alert alert-danger" role="alert">
+						Please <strong>Login</strong> to add items to cart.
+					</div>
+				</c:if>
 
 				<form action="../orderItems/addToCart" method="post">
 					<input type="hidden" name="book_id" value="${SELECTED_BOOK.id}" />
@@ -39,7 +43,7 @@
 							</c:if>
 							<c:if test="${empty LOGGED_IN_USER}">
 								<td><button type="submit" class="btn btn-primary" disabled>Add
-										To Cart</button> Note: Login to add items to Cart</td>
+										To Cart</button></td>
 							</c:if>
 
 						</tr>
