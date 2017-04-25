@@ -1,0 +1,61 @@
+2017-04-25 14:56:05.332  INFO 736 --- [restartedMain] com.janani.BookappJpaApplication         : Starting BookappJpaApplication on Esakki with PID 736 (D:\JPA\bookapp-jpa\target\classes started by EP in D:\JPA\bookapp-jpa)
+2017-04-25 14:56:05.336  INFO 736 --- [restartedMain] com.janani.BookappJpaApplication         : No active profile set, falling back to default profiles: default
+2017-04-25 14:56:05.597  INFO 736 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@49242d95: startup date [Tue Apr 25 14:56:05 IST 2017]; root of context hierarchy
+2017-04-25 14:56:11.424  INFO 736 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$68ecf0fa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-04-25 14:56:12.758  INFO 736 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-04-25 14:56:12.803  INFO 736 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-04-25 14:56:12.807  INFO 736 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-04-25 14:56:13.512  INFO 736 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2017-04-25 14:56:13.525  INFO 736 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-04-25 14:56:13.526  INFO 736 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 7943 ms
+2017-04-25 14:56:13.954  INFO 736 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-04-25 14:56:13.961  INFO 736 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-04-25 14:56:13.962  INFO 736 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-04-25 14:56:13.963  INFO 736 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-04-25 14:56:13.963  INFO 736 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-04-25 14:56:15.833  INFO 736 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-04-25 14:56:15.926  INFO 736 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-04-25 14:56:16.292  INFO 736 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2017-04-25 14:56:16.299  INFO 736 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-04-25 14:56:16.307  INFO 736 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-04-25 14:56:16.504  INFO 736 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-04-25 14:56:18.051  INFO 736 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-04-25 14:56:20.275  INFO 736 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-04-25 14:56:23.848  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@49242d95: startup date [Tue Apr 25 14:56:05 IST 2017]; root of context hierarchy
+2017-04-25 14:56:24.381  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/auth/register],methods=[POST]}" onto public java.lang.String com.janani.controller.AuthController.register(com.janani.model.User,org.springframework.ui.ModelMap,javax.servlet.http.HttpSession) throws java.lang.Exception
+2017-04-25 14:56:24.386  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/auth/logout],methods=[GET]}" onto public java.lang.String com.janani.controller.AuthController.logout(javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.388  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/auth/register],methods=[GET]}" onto public java.lang.String com.janani.controller.AuthController.showRegsiter()
+2017-04-25 14:56:24.389  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/auth/login],methods=[POST]}" onto public java.lang.String com.janani.controller.AuthController.login(java.lang.String,java.lang.String,org.springframework.ui.ModelMap,javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.390  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/auth/login],methods=[GET]}" onto public java.lang.String com.janani.controller.AuthController.login()
+2017-04-25 14:56:24.397  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/books],methods=[GET]}" onto public java.lang.String com.janani.controller.BookController.list(javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.398  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/books/{id}],methods=[GET]}" onto public java.lang.String com.janani.controller.BookController.show(java.lang.Long,org.springframework.ui.ModelMap,javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.401  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.janani.controller.HomeController.showHome()
+2017-04-25 14:56:24.410  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/orders],methods=[GET]}" onto public java.lang.String com.janani.controller.OrderController.list(org.springframework.ui.ModelMap,javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.411  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/orders/save],methods=[POST]}" onto public java.lang.String com.janani.controller.OrderController.save(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.430  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/orders/updateStatus],methods=[GET]}" onto public java.lang.String com.janani.controller.OrderController.updateStatus(java.lang.Long,java.lang.String)
+2017-04-25 14:56:24.450  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/orders/myorders],methods=[GET]}" onto public java.lang.String com.janani.controller.OrderController.myOrders(org.springframework.ui.ModelMap,javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.568  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/orderItems/list],methods=[GET]}" onto public java.lang.String com.janani.controller.OrderItemController.list(javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.571  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/orderItems/addToCart],methods=[GET]}" onto public java.lang.String com.janani.controller.OrderItemController.addToCart(java.lang.String,javax.servlet.http.HttpServletRequest)
+2017-04-25 14:56:24.573  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/orderItems/addToCart],methods=[POST]}" onto public java.lang.String com.janani.controller.OrderItemController.addToCart(java.lang.Long,java.lang.Integer,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.585  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users],methods=[GET]}" onto public java.lang.String com.janani.controller.UserController.list(javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.588  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/{id}],methods=[GET]}" onto public java.lang.String com.janani.controller.UserController.show(java.lang.Long,org.springframework.ui.ModelMap,javax.servlet.http.HttpSession)
+2017-04-25 14:56:24.602  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-04-25 14:56:24.604  INFO 736 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-04-25 14:56:24.872  INFO 736 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-04-25 14:56:24.873  INFO 736 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-04-25 14:56:25.048  INFO 736 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-04-25 14:56:25.807  INFO 736 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-04-25 14:56:25.996  INFO 736 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-04-25 14:56:26.209  INFO 736 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-04-25 14:56:26.224  INFO 736 --- [restartedMain] com.janani.BookappJpaApplication         : Started BookappJpaApplication in 22.279 seconds (JVM running for 24.555)
+2017-04-25 14:56:26.225  INFO 736 --- [restartedMain] com.janani.BookappJpaApplication         : Application Started
+2017-04-25 14:58:15.396  INFO 736 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-04-25 14:58:15.399  INFO 736 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-04-25 14:58:15.849  INFO 736 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 449 ms
+2017-04-25 14:58:19.851  INFO 736 --- [http-nio-8080-exec-5] com.janani.controller.BookController     : Entering list
+2017-04-25 14:58:19.971  INFO 736 --- [http-nio-8080-exec-5] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-04-25 14:58:31.794  INFO 736 --- [http-nio-8080-exec-1] com.janani.controller.AuthController     : Entering Login
+2017-04-25 14:58:31.973  INFO 736 --- [http-nio-8080-exec-1] com.janani.controller.AuthController     : Login Success
+2017-04-25 14:58:32.007  INFO 736 --- [http-nio-8080-exec-2] com.janani.controller.BookController     : Entering list
