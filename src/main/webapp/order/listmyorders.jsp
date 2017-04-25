@@ -14,45 +14,58 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<b>My Orders</b>
-					<table border="1" class="table table-bordered">
-						<thead>
-							<tr>
-								<th width="10%">Order Id</th>
-								<th>Order Items </th>
-								<th> Amount </th>
-								<th>Status</th>
-								<th>Ordered Date </th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${MY_ORDERS}" var="order">
-								<tr>
-									<td>${order.id}</td>
-									<td>
-									<ul>
-									<c:forEach items="${order.orderItems}" var="item">
-									<li>${item.book.name} (Quantity - ${item.quantity} ) </li>
-									</c:forEach>
-									</ul>
-									</td>
-									<td>Rs. ${order.totalPrice } </td>
-									<td>${order.status}</td>
-									<td>${order.orderedDate } </td>									
-									<c:if test="${order.status == 'ORDERED'}">
-										<td><a
-											href="../orders/updateStatus?id=${order.id}&status=CANCELLED" class="btn btn-danger btn-sm">Cancel
-												Order </a></td>
-									</c:if>
-									
-								</tr>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong><i class="fa fa-list"></i> My Orders</strong>
+						</div>
+						<div class="panel-body">
+							<table id="ordersTbl" border="1"
+								class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th width="10%">Order Id</th>
+										<th>Order Items</th>
+										<th>Amount</th>
+										<th>Status</th>
+										<th>Ordered Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${MY_ORDERS}" var="order">
+										<tr>
+											<td>${order.id}</td>
+											<td>
+												<ul>
+													<c:forEach items="${order.orderItems}" var="item">
+														<li>${item.book.name}(Quantity - ${item.quantity} )</li>
+													</c:forEach>
+												</ul>
+											</td>
+											<td>Rs. ${order.totalPrice }</td>
+											<td>${order.status}</td>
+											<td>${order.orderedDate }</td>
+											<c:if test="${order.status == 'ORDERED'}">
+												<td><a
+													href="../orders/updateStatus?id=${order.id}&status=CANCELLED"
+													class="btn btn-danger btn-sm">Cancel Order </a></td>
+											</c:if>
 
-							</c:forEach>
-						</tbody>
-					</table>
+										</tr>
+
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+		$(document).ready(function() {
+			$("#ordersTbl").DataTable();
+		});
+	</script>
 </body>
 </html>

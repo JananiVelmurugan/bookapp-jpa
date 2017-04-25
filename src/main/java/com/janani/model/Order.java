@@ -38,7 +38,7 @@ public class Order {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@Formula("fn_get_order_amount(id)")
+	//@Formula("fn_get_order_amount(id)")
 	@Column(name = "total_price")
 	private Integer totalPrice;
 
