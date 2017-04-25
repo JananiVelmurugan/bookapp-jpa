@@ -22,14 +22,5 @@ public class OrderItemService {
 		orderItemRepository.save(orderItem);
 	}
 
-	public Float findByOrder(Long id) {
-	/*	List<Integer> priceList = orderItemRepository.findPrice(id);
-		Float totalPrice = 0f;
-		for (Integer price : priceList) {
-			totalPrice+=price;
-		}*/
-		Float totalPrice = bookRepository.findByPrice(id);
-		return totalPrice;
-	}
 
 }

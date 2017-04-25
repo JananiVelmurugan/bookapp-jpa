@@ -20,6 +20,6 @@ public class Book {
 	private String name;
 
 	@Column(name = "price")
-	private Float price;
+	private Integer price;
 
 }

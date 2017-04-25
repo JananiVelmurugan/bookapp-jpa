@@ -11,4 +11,10 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
 //	@Query(value="select * from orders o, order_items oi where o.id = oi.order_id and user_id =?1", nativeQuery=true)
 	public List<Order> findByUserId(Long userId);
+	
+/*
+	@Query(name = "SELECT fn_get_order_amount(?1)", nativeQuery = true)
+	public Integer findTotalPrice(Long orderId);*/
+	
+	
 }

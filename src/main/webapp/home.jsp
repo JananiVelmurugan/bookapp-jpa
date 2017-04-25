@@ -15,6 +15,15 @@
 
 		<div class="row">
 			<div class="col-md-4">
+				
+				<%
+				Object object = session.getAttribute("LOGGED_IN_USER");
+				if ( object != null ){
+					response.sendRedirect("/books");
+				}
+				
+				
+				%>
 
 				<div class="portlet-title">
 					<div class="page-header">

@@ -34,9 +34,9 @@ public class Order {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	//@Formula("select sum(b.price) from Book b, OrderItem o where o.book_id =b.id")
+	@Formula("fn_get_order_amount(id)")
 	@Column(name = "total_price")
-	private Float totalPrice;
+	private Integer totalPrice;
 
 	@Column(name = "status")
 	private String status;

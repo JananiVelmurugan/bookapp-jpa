@@ -1,5 +1,8 @@
 package com.janani.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -44,23 +47,26 @@ public class OrderItemController {
 	public String addToCart(@RequestParam("book_id") Long bookId, @RequestParam("qty") Integer qty,  HttpServletRequest request, HttpSession session) {
 
 		User user = (User) session.getAttribute("LOGGED_IN_USER");
+		
+		//create order
 		Order order = new Order();
 		order.setUser(user);
-		order.setTotalPrice(0f);
+		order.setTotalPrice(0);
 		order.setStatus("ORDERED");
-		orderService.save(order);
 
+		//store orderItems
+		List<OrderItem> orderItems = new ArrayList<>();
+		
 		OrderItem orderItem = new OrderItem();
 		orderItem.setOrder(order);
-		Book book = bookService.findOne(bookId);
+		Book book = new Book();
+		book.setId(bookId);
 		orderItem.setBook(book);
 		orderItem.setQuantity(qty);
-		orderItemService.save(orderItem);
-/*
-		Float totalPrice = orderItemService.findByOrder(order.getId());
-		order.setTotalPrice(totalPrice);
-		orderService.save(order);*/
+		orderItems.add(orderItem);
 		
+		order.setOrderItems(orderItems);
+		orderService.save(order);	
 		
 		return "redirect:/books";
 	}
