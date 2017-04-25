@@ -2,6 +2,7 @@ package com.janani.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,7 +28,8 @@ public class OrderItem {
 	@Column(name = "quantity")
 	private Integer quantity;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "book_id")
+	//@Column(name="book_id")
 	private Book book;
 }

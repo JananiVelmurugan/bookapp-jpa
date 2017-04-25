@@ -24,16 +24,7 @@ public class OrderController {
 	@Autowired
 	private OrderRepository orderRepository;
 
-	@GetMapping("/")
-	public String list(HttpSession session) {
 
-		List<Order> list = orderRepository.findAll();
-		session.setAttribute("cart", list);
-		return "view-cart";
-
-	}
-	
-	
 
 	@GetMapping("/myorders")
 	public String myOrders(ModelMap modelMap, HttpSession session) {
@@ -49,7 +40,11 @@ public class OrderController {
 	public String list(ModelMap modelMap, HttpSession session) {
 
 		List<Order> list = orderRepository.findAll();
-		modelMap.addAttribute("ALL_ORDERS", list);
+		System.out.println("orders:"+ list.size());
+		for (Order order : list) {
+			System.out.println(order);
+		}
+		modelMap.addAttribute("ORDERS_LIST", list);
 		return "order/list";
 
 	}
