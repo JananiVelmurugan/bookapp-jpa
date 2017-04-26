@@ -10,14 +10,14 @@
 
 <title>Admin</title>
 
-<link href="../theme/css/bootstrap.min.css" rel="stylesheet">
-<link href="../theme/font-awesome/css/font-awesome.css" rel="stylesheet">
+ <link href="../bower/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-<link href="../theme/css/plugins/dataTables/datatables.min.css"
-	rel="stylesheet">
+    <link href="../theme/css/datatables.min.css" rel="stylesheet">
 
-<link href="../theme/css/animate.css" rel="stylesheet">
-<link href="../theme/css/style.css" rel="stylesheet">
+    <!-- <link href="../bower/plugins/animate.css/animate.min.css" rel="stylesheet"> --> 
+    <link href="../theme/css/animate.css" rel="stylesheet"> 
+    <link href="../theme/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -91,25 +91,19 @@
 		</div>
 	</div>
 
-   <!-- Mainly scripts -->
-    <script src="../theme/js/jquery-3.1.1.min.js"></script>
-    <script src="../theme/js/bootstrap.min.js"></script>
-    <script src="../theme/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="../theme/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+ 
+    <!-- Mainly scripts -->
+    <script src="../bower/plugins/jquery/jquery.min.js"></script>
+    <script src="../bower/plugins/bootstrap/bootstrap.min.js"></script>
+     <script src="../bower/plugins/metismenu/metisMenu.min.js"></script>
+    <script src="../bower/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script> 
 
     <script src="../theme/js/plugins/dataTables/datatables.min.js"></script>
 
     <!-- Custom and plugin javascript -->
     <script src="../theme/js/inspinia.js"></script>
-    <script src="../theme/js/plugins/pace/pace.min.js"></script>
-
-    <!-- Page-Level Scripts -->
-    <script>
-        $(document).ready(function(){
-        	  $('.dataTables-example').DataTable();
-        });
-
-    </script>
+    <!-- <script src="../theme/js/plugins/pace/pace.min.js"></script>  -->
+    
 
 </body>
 

@@ -3,22 +3,25 @@ package com.janani.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.janani.form.RegistrationForm;
 import com.janani.model.Book;
 import com.janani.model.User;
 import com.janani.service.BookService;
 import com.janani.service.UserService;
-import com.janani.util.EmailUtil;
 
 @Controller
 @RequestMapping("auth")
@@ -29,12 +32,6 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private BookService bookService;
-
-	@Autowired
-	private EmailUtil emailUtil;
-
 	@PostMapping("/login")
 	public String login(@RequestParam("emailId") String emailId, @RequestParam("password") String password,
 			ModelMap modelMap, HttpSession session) {
@@ -43,9 +40,7 @@ public class AuthController {
 
 		User user = userService.findByEmailAndPassword(emailId, password);
 		if (user != null) {
-			List<Book> books = bookService.findAll();
 			session.setAttribute("LOGGED_IN_USER", user);
-			session.setAttribute("books", books);
 			LOGGER.info("Login Success");
 			return "redirect:../books";
 		} else {
@@ -59,30 +54,38 @@ public class AuthController {
 	public String login() {
 		return "user/login";
 	}
-	
+
 	@GetMapping("/register")
 	public String showRegsiter() {
 		return "user/register";
 	}
 
 	@PostMapping("/register")
-	public String register(@ModelAttribute User user, ModelMap modelMap, HttpSession session) throws Exception {
+	public String register(@ModelAttribute @Valid RegistrationForm user, BindingResult result,ModelMap modelMap, 
+			HttpSession session) throws Exception {
 		try {
 
-			userService.register(user);
-			// Send Registration Notification Mail
-			String subject = "Your account has been created";
-			String body = "Welcome to Revature ! You can login to your account !";
-			emailUtil.send(user.getEmail(), subject, body);
-			return "redirect:../";
+			System.out.println("Registraion Form :" + user);
+			
+			if (result.hasErrors()) {
+				modelMap.addAttribute("errors", result.getAllErrors());
+				modelMap.addAttribute("regFormData", user );
+				return "user/register";
+			}else {
+				userService.register(user);
+				
+				return "redirect:../";
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			modelMap.addAttribute("regFormData", user );
 			modelMap.addAttribute("ERROR_MESSAGE", e.getMessage());
 			return "user/register";
 		}
 
 	}
-	
+
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

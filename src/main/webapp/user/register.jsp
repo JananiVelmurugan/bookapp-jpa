@@ -10,20 +10,33 @@
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-6">
 
-				<b>Create a New Account</b>
+				
+				<h5>Create a New Account</h5>
+				
+				<br/>
+				
+				<c:forEach items="${errors}" var="error">
+					<font color="red"><c:out value="${error.defaultMessage}"  /></font> <br/>
+				</c:forEach>
+				
+				<c:if test="${not empty ERROR_MESSAGE}">
+					<font color="red"><c:out value="${ERROR_MESSAGE}" /></font> <br/>
+				</c:if>
+				
+				
 				<form id="addUserFrm" class="form-horizontal" role="form"
 					method="POST" action="../auth/register">
 
 					<div class="form-group">
 						<label for="name">NAME:</label><input type="text"
-							class="form-control" name="name" required="required" id="name" />
+							class="form-control" name="name" required="required" id="name" value="${regFormData.name.trim()}" />
 					</div>
 
 					<div class="form-group">
 						<label for="emailId">E-MAILID:</label><input type="email"
-							class="form-control" name="email" required="required" id="email" />
+							class="form-control" name="email" required="required" id="email"  value="${regFormData.email.trim()}"/>
 					</div>
 					<div class="form-group">
 						<label for="password">PASSWORD:</label><input type="password"
@@ -43,6 +56,7 @@
 
 			</div>
 		</div>
+	</div>
 </body>
 
 </html>
