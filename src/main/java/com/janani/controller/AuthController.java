@@ -43,9 +43,7 @@ public class AuthController {
 
 		User user = userService.findByEmailAndPassword(emailId, password);
 		if (user != null) {
-			List<Book> books = bookService.findAll();
 			session.setAttribute("LOGGED_IN_USER", user);
-			session.setAttribute("books", books);
 			LOGGER.info("Login Success");
 			return "redirect:../books";
 		} else {
@@ -59,7 +57,7 @@ public class AuthController {
 	public String login() {
 		return "user/login";
 	}
-	
+
 	@GetMapping("/register")
 	public String showRegsiter() {
 		return "user/register";
@@ -82,7 +80,7 @@ public class AuthController {
 		}
 
 	}
-	
+
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
