@@ -34,7 +34,7 @@
 							<td>${SELECTED_BOOK.name}</td>
 
 							<td>Rs. ${SELECTED_BOOK.price}</td>
-							<td><input type="number" name="qty" min="1" max="5"
+							<td><input type="number" name="qty" min="1" 
 								value="1" required /></td>
 
 							<c:if test="${!empty LOGGED_IN_USER}">
