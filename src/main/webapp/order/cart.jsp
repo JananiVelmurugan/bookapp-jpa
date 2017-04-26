@@ -14,12 +14,12 @@
 
 				<div class="col-md-8">
 					<h5>My Cart</h5>
-					<c:if test="${empty MY_CART_ITEMS}">
+					<c:if test="${empty MY_CART_ITEMS || MY_CART_ITEMS.orderItems.isEmpty()}">
 						<img src="../assets/images/empty-cart.png" width="300" />
 						<h5>Your Shopping Cart is empty</h5>
 						<a href="../books" class="btn btn-info">Continue Shopping</a>
 					</c:if>
-					<c:if test="${!empty MY_CART_ITEMS}">
+					<c:if test="${!empty MY_CART_ITEMS && !MY_CART_ITEMS.orderItems.isEmpty()}">
 						<table border="1" class="table table-bordered">
 							<thead>
 								<tr>
@@ -53,7 +53,7 @@
 					</c:if>
 				</div>
 
-				<c:if test="${ MY_CART_ITEMS != null}">
+				<c:if test="${ MY_CART_ITEMS != null && MY_CART_ITEMS.orderItems.size()>0}">
 					<div class="col-md-4">
 						<b>Price Details</b>
 
@@ -84,8 +84,9 @@
 									</tr>
 									<tr>
 										<td colspan="2" align="center">
+										
 										<button type="submit" 
-											class="btn btn-success btn-block">Place an Order</button></td>
+											class="btn btn-success btn-block" >Place an Order</button></td>
 									</tr>
 								</tbody>
 							</table>

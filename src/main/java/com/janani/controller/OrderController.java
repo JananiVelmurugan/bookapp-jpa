@@ -56,11 +56,10 @@ public class OrderController {
 		if ( orderInCart != null && orderInCart.getOrderItems().size() > 0) {
 			orderInCart.setTotalPrice(totalAmount);
 			orderService.save(orderInCart);
-			session.removeAttribute("MY_CART_ITEMS");
-			
+			session.removeAttribute("MY_CART_ITEMS");			
 		}
 				
-		return "redirect:../books";
+		return "redirect:../orders/myorders";
 	}
 	
 	@GetMapping("/updateStatus")
