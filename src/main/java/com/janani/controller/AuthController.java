@@ -35,10 +35,11 @@ public class AuthController {
 	@PostMapping("/login")
 	public String login(@RequestParam("emailId") String emailId, @RequestParam("password") String password,
 			ModelMap modelMap, HttpSession session) {
-		LOGGER.info("Entering Login");
+		LOGGER.info("Entering Login " + emailId + "-"+ password );
 		LOGGER.debug(new Object[] { emailId, password });
 
 		User user = userService.findByEmailAndPassword(emailId, password);
+		LOGGER.info("User:" + user);
 		if (user != null) {
 			session.setAttribute("LOGGED_IN_USER", user);
 			LOGGER.info("Login Success");

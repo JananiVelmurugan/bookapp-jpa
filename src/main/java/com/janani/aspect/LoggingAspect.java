@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 public class LoggingAspect {
 
 	@Around("execution(* com.janani.service.*.*(..))")
-	public void aroundAdviceForAllMethods(ProceedingJoinPoint jp) throws Throwable {
+	public Object aroundAdviceForAllMethods(ProceedingJoinPoint jp) throws Throwable {
 		System.out.println("****Before advised method execution " + jp.getSignature().getName());
-		jp.proceed();
+		Object result = jp.proceed();
 		System.out.println("****After advised method execution " + jp.getSignature().getName());
-		System.out.println();
+		return result;
 	}
 }
