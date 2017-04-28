@@ -11,9 +11,10 @@
 		<div class="row">
 			<div class="col-md-9">
 				<span> <b> Sort by : </b>
-				</span> Price : <a href="../books?price=asc"> Low to High </a> <a
-					href="../books?price=desc">High to Low</a>
-
+				</span> Price : <a href="../books?price=asc"> 
+				<span class="badge badge-primary">Low to High</span> </a> <a
+					href="../books?price=desc"><span class="badge badge-primary">High to Low</span></a>
+			<a href="../books?released_date=desc"><span class="badge badge-success">Newest First</span></a>
 			</div>
 		</div>
 		<div class="row">
@@ -29,7 +30,8 @@
 						</div>
 
 						<div class="col-lg-8 col-md-8 col-xs-12">
-							<p class="card-text">${book.name}-Rs.${book.price }</p>
+							<p class="card-text">${book.name}-Rs.${book.price } <br/>
+							Published Date - ${book.releasedDate}</p>
 							<a href="../books/${book.id}" class="btn btn-success btn-sm">View</a>
 						</div>
 					</div>

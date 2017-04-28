@@ -26,7 +26,7 @@ public class BookController {
 	private BookService bookService;
 
 	@GetMapping
-	public String list(@RequestParam(value = "price",required=false) String priceFilter, HttpSession session) {
+	public String list(@RequestParam(value = "price",required=false) String priceFilter, @RequestParam(value = "released_date",required=false) String releasedDateFilter, HttpSession session) {
 		LOGGER.info("Entering list");
 		
 		List<Book> books = null ; 
@@ -37,7 +37,13 @@ public class BookController {
 			} else if (priceFilter.equals("asc")) {
 				books = bookService.findByPriceAsc();
 			}
-		} else {
+		}
+		else if (releasedDateFilter != null ) {
+			if ( releasedDateFilter.equals("desc")){
+				books = bookService.findByReleasedDateDesc();
+			}
+		}
+		else {
 			books = bookService.findAll();
 		}
 		System.out.println(books);

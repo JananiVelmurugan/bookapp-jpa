@@ -14,4 +14,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 /*
 	@Query(name = "SELECT fn_get_order_amount(?1)", nativeQuery = true)
 	public Integer findByPrice(Long orderId);*/
+
+	List<Book> findByOrderByReleasedDateDesc();
 }

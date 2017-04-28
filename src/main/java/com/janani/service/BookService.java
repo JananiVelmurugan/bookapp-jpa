@@ -29,5 +29,9 @@ public class BookService {
 	public List<Book> findByPriceAsc() {
 		return bookRepository.findByOrderByPriceAsc();
 	}
+
+	public List<Book> findByReleasedDateDesc() {
+		return bookRepository.findByOrderByReleasedDateDesc();
+	}
 	
 }
