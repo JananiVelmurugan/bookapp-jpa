@@ -8,16 +8,24 @@
 <body>
 	<%@ include file="../../layout/header.jsp"%>
 	<div class="container-fluid">
-
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
+				<span> <b> Sort by : </b>
+				</span> Price : <a href="../books?price=asc"> Low to High </a> <a
+					href="../books?price=desc">High to Low</a>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-9">
+
 				<h4>List of Books</h4>
 
 				<c:forEach items="${books}" var="book">
 					<div class="row book-container-bg">
 						<div class="col-lg-4 col-md-4 col-xs-12">
-							<img class="card-img-left" src="../assets/images/java.jpg" width="100"
-								alt="Card image cap">
+							<img class="card-img-left" src="../assets/images/java.jpg"
+								width="100" alt="Card image cap">
 						</div>
 
 						<div class="col-lg-8 col-md-8 col-xs-12">
@@ -29,6 +37,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

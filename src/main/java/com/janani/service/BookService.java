@@ -21,4 +21,13 @@ public class BookService {
 	public Book findOne(Long id) {
 		return bookRepository.findOne(id);
 	}
+
+	public List<Book> findByPriceDesc() {
+		return bookRepository.findByOrderByPriceDesc();
+	}
+	
+	public List<Book> findByPriceAsc() {
+		return bookRepository.findByOrderByPriceAsc();
+	}
+	
 }

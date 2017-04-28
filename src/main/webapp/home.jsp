@@ -31,7 +31,7 @@
 					</div>
 				</div>
 				<div class="portlet-body">
-					<form action="auth/login" method="POST">
+					<form action="../auth/login" method="POST">
 						<div class="form-group">
 							<label for="userName">EmailId :</label> <input type="email"
 								class="form-control" name="emailId" placeholder="Enter emailId"
