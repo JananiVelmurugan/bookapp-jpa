@@ -11,10 +11,13 @@
 		<div class="row">
 			<div class="col-md-9">
 				<span> <b> Sort by : </b>
-				</span> Price : <a href="../books?price=asc"> 
-				<span class="badge badge-primary">Low to High</span> </a> <a
-					href="../books?price=desc"><span class="badge badge-primary">High to Low</span></a>
-			<a href="../books?released_date=desc"><span class="badge badge-success">Newest First</span></a>
+				</span> Price : <a href="../books?price=asc"> <span
+					class="badge badge-primary">Low to High</span>
+				</a> <a href="../books?price=desc"><span class="badge badge-primary">High
+						to Low</span></a> <a href="../books?released_date=desc"><span
+					class="badge badge-success">Newest First</span></a> <a
+					href="../books/sales"><span class="badge badge-success">Top
+						Books</span></a>
 			</div>
 		</div>
 		<div class="row">
@@ -30,8 +33,9 @@
 						</div>
 
 						<div class="col-lg-8 col-md-8 col-xs-12">
-							<p class="card-text">${book.name}-Rs.${book.price } <br/>
-							Published Date - ${book.releasedDate}</p>
+							<p class="card-text">${book.name}-Rs.${book.price }
+								<br /> Published Date - ${book.releasedDate}
+							</p>
 							<a href="../books/${book.id}" class="btn btn-success btn-sm">View</a>
 						</div>
 					</div>

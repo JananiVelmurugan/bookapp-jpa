@@ -16,4 +16,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 	public Integer findByPrice(Long orderId);*/
 
 	List<Book> findByOrderByReleasedDateDesc();
+	
+	
+	
+	
 }

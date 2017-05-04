@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.janani.dto.BookSalesResult;
 import com.janani.model.Book;
 import com.janani.service.BookService;
 
@@ -57,6 +58,14 @@ public class BookController {
 		Book book = bookService.findOne(id);
 		modelMap.addAttribute("SELECTED_BOOK", book);
 		return "book/show";
+	}
+	
+	@GetMapping("/sales")
+	public String findBookSales(ModelMap modelMap)
+	{
+		List<BookSalesResult> findBookSales = bookService.findBookSales();
+		modelMap.addAttribute("BOOK_SALES", findBookSales);
+		return  "book/salesreport";
 	}
 
 }
