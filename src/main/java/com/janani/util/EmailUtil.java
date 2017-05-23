@@ -1,4 +1,4 @@
-package com.senthamil.util;
+package com.janani.util;
 
 import javax.mail.internet.MimeMessage;
 

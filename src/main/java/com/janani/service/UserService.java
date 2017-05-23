@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.janani.form.RegistrationForm;
 import com.janani.model.User;
 import com.janani.repository.UserRepository;
-import com.senthamil.util.EmailUtil;
+import com.janani.util.EmailUtil;
 
 @Service
 public class UserService {
